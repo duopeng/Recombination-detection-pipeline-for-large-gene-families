@@ -8,6 +8,9 @@ PERL script #1,#3,#4,#6 runs in Linux , and  #2,#5 runs in window environment
 This set of PERL scripts is in active development. Please direct any questions to github.com/duopeng
 
 Required software:
+
 NCBI BLAST 2.2.29+
+
 clustalw2
+
 RDP4
