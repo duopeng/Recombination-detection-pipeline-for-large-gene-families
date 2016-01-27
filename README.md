@@ -2,9 +2,9 @@
 This set of PERL scripts automates detection of recombination events in large gene families. 
 
 It was tested with <br>
-(1)T. cruzi trans-sialidase gene family (3209 genes with an average length of 1.5kb)<br>
-(2) T. cruzi MASP gene family (1032 genes) <br>
-(3) T. cruzi Mucin gene family (661 genes)
+(1) <i>T. cruzi</i> trans-sialidase gene family (3209 genes with an average length of 1.5kb)<br>
+(2) <i>T. cruzi</i> MASP gene family (1032 genes) <br>
+(3) <i>T. cruzi</i> Mucin gene family (661 genes)
 
 PERL script #1,#3,#4,#6 runs in Linux , and  #2,#5 runs in window environment
 
