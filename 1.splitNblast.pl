@@ -4,7 +4,7 @@
 #hit that are >95% identity and nonself, 5.then from those select out a subset of 
 #top identity hits,6 remove recent relatives, 7.and then find identity of flanking 
 #sequence 
-#plese specify fasta file, in which all sequence a analyzed for recombination
+#plese specify fasta file, in which all sequence are analyzed for recombination
 my $fastafile="TcMucin.fasta";
 #specify db name, make sure there is a BLAST db in this name!!
 my $dbname="TcMucin.fasta";
@@ -186,11 +186,11 @@ open OUT2, ">4_splitted_seq_nonself_hit_top/${filename}.parsed";
 #print header
 print OUT "query_name"."\t"."hit name"."\t"."hit->description"."\t"."percent_identity"."\t"."coverage"."\t"."start('query')"."\t"."end('query')"."\t"."start('hit')"."\t"."end('hit')"."\n";
 print OUT2 "query_name"."\t"."hit name"."\t"."hit->description"."\t"."percent_identity"."\t"."coverage"."\t"."start('query')"."\t"."end('query')"."\t"."start('hit')"."\t"."end('hit')"."\n";
-#´ò¿ªblast½á¹ûÎÄ¼þ
+#æ‰“å¼€blastç»“æžœæ–‡ä»¶
 my $in = new Bio::SearchIO(-format => 'blast', 
                            -file   => "2_splitted_seq_BLASTout/${filename}");                          
 my $queryno=1;  #query number, used to sort query in hash
-#Íâ²ãÑ­»·£ºÉ¨Ãèresults
+#å¤–å±‚å¾ªçŽ¯ï¼šæ‰«æresults
 while( my $result = $in->next_result ) {
 	#print OUT "next result\n";
         my $q_len = $result->query_length;
@@ -199,12 +199,12 @@ while( my $result = $in->next_result ) {
 		#my $queryid=$queryname[1].'.'.$queryname[2];
 		#print $queryid."\n";
 		#print "queryid: $queryid\n";
-#È¡all hits
+#å–all hits
   while(my $hit = $result->next_hit) {
    # print OUT "next hit\n";
     my $hit_desc=$hit->description;
     #print "hit_desc: $hit_desc\n";
-#É¨Ãèhsp
+#æ‰«æhsp
    while( my $hsp = $hit->next_hsp) {   
   #  print OUT "next hsp\t";
   #  print OUT $hsp->percent_identity."\t";
@@ -222,16 +222,16 @@ while( my $result = $in->next_result ) {
      #print "query - hit  $queryid  -  $tempdesc \n";
      my $tdesc=$result->query_name."\t".$hit->name."\t".$hit->description."\t".$hsp->percent_identity."\t".$coverage."\t".$hsp->start('query')."\t".$hsp->end('query')."\t".$hsp->start('hit')."\t".$hsp->end('hit')."\n";
 
-	 if ($ident>$query{$queryno}{'identity'}) {   #Èç¹ûidentity ¸ü¸ß£¬Ôò¸üÐÂ
+	 if ($ident>$query{$queryno}{'identity'}) {   #å¦‚æžœidentity æ›´é«˜ï¼Œåˆ™æ›´æ–°
 	 $query{$queryno}{'desc'}=$tdesc;	 
 	 $query{$queryno}{'identity'}=$ident
 	 }	 
-	 if ($ident==$query{$queryno}{'identity'}) {  #Èç¹ûidentity ÏàÍ¬£¬Ôòappend
+	 if ($ident==$query{$queryno}{'identity'}) {  #å¦‚æžœidentity ç›¸åŒï¼Œåˆ™append
       $query{$queryno}{'desc'}= $query{$queryno}{'desc'}.$tdesc;	
 	 }
      print OUT $tdesc;
   }
-    elsif ((!(exists $query{$queryno})) and (!($queryid=~/$tempdesc/))) {  #Èç¹ûÃ»ÓÐ´ËqueryµÄ¼ÇÂ¼£¬Ôò½¨Á¢
+    elsif ((!(exists $query{$queryno})) and (!($queryid=~/$tempdesc/))) {  #å¦‚æžœæ²¡æœ‰æ­¤queryçš„è®°å½•ï¼Œåˆ™å»ºç«‹
           my $tdesc=$result->query_name."\t".$hit->name."\t".$hit->description."\t".$hsp->percent_identity."\t".$coverage."\t".$hsp->start('query')."\t".$hsp->end('query')."\t".$hsp->start('hit')."\t".$hsp->end('hit')."\n";
              print OUT $tdesc;
 			   $query{$queryno}{'desc'}=$tdesc;
