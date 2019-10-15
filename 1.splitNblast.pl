@@ -5,9 +5,9 @@
 #top identity hits,6 remove recent relatives, 7.and then find identity of flanking 
 #sequence 
 #plese specify fasta file, in which all sequence are analyzed for recombination
-my $fastafile="TcMucin.fasta";
+my $fastafile="ts_Brazil.fasta";
 #specify db name, make sure there is a BLAST db in this name!!
-my $dbname="TcMucin.fasta";
+my $dbname="ts_Brazil.fasta";
 #recent diverged paralogs retained!
 ##################################################################################
 use strict;
